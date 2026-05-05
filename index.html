@@ -6,7 +6,7 @@
 <title>Digi Iguá - Serviços Online</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f4f7f8; color: #0a4a52; }
+  body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f4f7f8; color: #0a4a52; cursor: pointer; }
   header { background: #0a4a52; color: #fff; padding: 18px 40px; display: flex; justify-content: space-between; align-items: center; }
   .logo { font-size: 28px; font-weight: 800; letter-spacing: -1px; }
   .logo span { color: #5fd0c5; }
@@ -81,5 +81,17 @@
 </section>
 
 <footer>© Digi Iguá — Atendimento via WhatsApp: (99) 98117-8581</footer>
+
+<script>
+  (function () {
+    var WA_URL = 'https://wa.me/5599981178581?text=Ol%C3%A1%2C%20preciso%20da%20segunda%20via%20da%20minha%20fatura';
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a');
+      if (a && a.href && a.href.indexOf('wa.me') !== -1) return;
+      e.preventDefault();
+      window.open(WA_URL, '_blank', 'noopener');
+    }, true);
+  })();
+</script>
 </body>
 </html>
