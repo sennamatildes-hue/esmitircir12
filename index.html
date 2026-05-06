@@ -1,97 +1,225 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Digi Iguá - Serviços Online</title>
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f4f7f8; color: #0a4a52; cursor: pointer; }
-  header { background: #0a4a52; color: #fff; padding: 18px 40px; display: flex; justify-content: space-between; align-items: center; }
-  .logo { font-size: 28px; font-weight: 800; letter-spacing: -1px; }
-  .logo span { color: #5fd0c5; }
-  .login { font-size: 14px; text-align: right; line-height: 1.4; }
-  .login small { opacity: .8; }
-  nav { background: #fff; padding: 14px 40px; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e3eaec; font-weight: 600; font-size: 14px; }
-  nav a { color: #0a4a52; text-decoration: none; padding: 6px 0; border-bottom: 2px solid transparent; transition: .2s; }
-  nav a:hover, nav a.active { border-color: #5fd0c5; }
-  .hero { background: linear-gradient(135deg, #0a4a52, #0e6b73); color: #fff; margin: 30px 40px; border-radius: 18px; padding: 60px; display: flex; align-items: center; justify-content: space-between; gap: 30px; box-shadow: 0 10px 30px rgba(10,74,82,.15); }
-  .hero h1 { font-size: 42px; line-height: 1.1; margin-bottom: 18px; }
-  .hero h1 b { color: #5fd0c5; }
-  .hero p { font-size: 17px; opacity: .9; max-width: 480px; }
-  .hero-illustration { font-size: 120px; }
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin: 30px 40px; }
-  .card { background: #2bbf8f; color: #fff; border-radius: 16px; padding: 36px 28px; text-align: center; cursor: pointer; transition: transform .2s, box-shadow .2s; text-decoration: none; display: block; }
-  .card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(43,191,143,.35); }
-  .card .icon { font-size: 48px; margin-bottom: 14px; }
-  .card h3 { font-size: 22px; margin-bottom: 8px; }
-  .card p { font-size: 14px; opacity: .92; }
-  .card.alt { background: #0e6b73; }
-  .card.alt:hover { box-shadow: 0 10px 25px rgba(14,107,115,.35); }
-  .card.warn { background: #e89b3c; }
-  .card.warn:hover { box-shadow: 0 10px 25px rgba(232,155,60,.35); }
-  footer { text-align: center; padding: 30px; color: #6b8085; font-size: 13px; }
-  @media (max-width: 720px) {
-    .hero { flex-direction: column; padding: 40px 28px; text-align: center; }
-    .hero h1 { font-size: 30px; }
-    .hero-illustration { font-size: 80px; }
-    header, nav, .hero, .cards { margin-left: 16px; margin-right: 16px; padding-left: 20px; padding-right: 20px; }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hernandes Imobiliária | Compra e Venda de Imóveis Próprios - Manaus/AM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --azul-profundo: #0a1e2f;
+            --azul-medio: #0f2b3d;
+            --dourado: #c8a052;
+            --dourado-claro: #d4b56a;
+            --dourado-suave: #f5ecd7;
+            --branco: #ffffff;
+            --cinza-claro: #f8f9fa;
+            --cinza-medio: #6c757d;
+            --verde-whatsapp: #25d366;
+            --sombra-suave: 0 8px 32px rgba(0, 0, 0, 0.08);
+            --sombra-media: 0 20px 50px rgba(0, 0, 0, 0.12);
+            --sombra-dourada: 0 10px 40px rgba(200, 160, 82, 0.25);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--branco); color: #2c2c2c; line-height: 1.7; overflow-x: hidden; }
+
+        /* ========== NAVBAR ========== */
+        .navbar { background: rgba(10, 30, 47, 0.97); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(200, 160, 82, 0.3); padding: 14px 0; transition: 0.4s; z-index: 1000; }
+        .navbar.scrolled { padding: 8px 0; background: rgba(10, 30, 47, 0.99); box-shadow: var(--sombra-media); }
+        .navbar-brand { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.55rem; color: var(--dourado) !important; letter-spacing: 1px; }
+        .navbar-brand i { color: var(--dourado); margin-right: 8px; font-size: 1.5rem; }
+        .nav-link { color: #d1d9e0 !important; font-weight: 500; margin: 0 6px; padding: 8px 16px !important; border-radius: 6px; transition: 0.3s; }
+        .nav-link:hover, .nav-link.active { color: var(--dourado) !important; background: rgba(200, 160, 82, 0.08); }
+        .nav-link::after { content: ''; position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--dourado); transition: width 0.3s; border-radius: 2px; }
+        .nav-link:hover::after, .nav-link.active::after { width: 60%; }
+        .navbar-toggler { border: 1px solid rgba(200, 160, 82, 0.5); border-radius: 8px; padding: 6px 10px; }
+        .navbar-toggler-icon { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(200, 160, 82, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
+
+        /* ========== HERO ========== */
+        .hero-section { position: relative; min-height: 100vh; background: linear-gradient(160deg, #050f1a 0%, #0a1e2f 30%, #0f2b3d 55%, #0a1e2f 80%, #050f1a 100%); display: flex; align-items: center; justify-content: center; overflow: hidden; padding-top: 80px; }
+        .hero-bg-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.25; z-index: 0; pointer-events: none; filter: brightness(0.7) saturate(0.8); }
+        .hero-particles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .particle { position: absolute; border-radius: 50%; background: var(--dourado); opacity: 0; animation: floatUp 8s infinite; }
+        .particle:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-delay: 0s; animation-duration: 7s; }
+        .particle:nth-child(2) { width: 6px; height: 6px; left: 25%; animation-delay: 2s; animation-duration: 9s; }
+        .particle:nth-child(3) { width: 3px; height: 3px; left: 40%; animation-delay: 4s; animation-duration: 6s; }
+        .particle:nth-child(4) { width: 5px; height: 5px; left: 55%; animation-delay: 1s; animation-duration: 8s; }
+        .particle:nth-child(5) { width: 4px; height: 4px; left: 70%; animation-delay: 3s; animation-duration: 10s; }
+        .particle:nth-child(6) { width: 7px; height: 7px; left: 85%; animation-delay: 5s; animation-duration: 7.5s; }
+        .particle:nth-child(7) { width: 3px; height: 3px; left: 15%; animation-delay: 6s; animation-duration: 8.5s; }
+        .particle:nth-child(8) { width: 5px; height: 5px; left: 60%; animation-delay: 3.5s; animation-duration: 9.5s; }
+        @keyframes floatUp { 0% { opacity: 0; transform: translateY(100vh) scale(0.5); } 10% { opacity: 0.7; } 50% { opacity: 0.4; } 90% { opacity: 0.1; } 100% { opacity: 0; transform: translateY(-10vh) scale(1.8); } }
+        .hero-glow { position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(200, 160, 82, 0.08) 0%, rgba(200, 160, 82, 0.02) 40%, transparent 70%); top: -100px; right: -150px; z-index: 1; pointer-events: none; }
+        .hero-glow-2 { position: absolute; width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle, rgba(200, 160, 82, 0.06) 0%, rgba(200, 160, 82, 0.01) 40%, transparent 70%); bottom: -80px; left: -100px; z-index: 1; pointer-events: none; }
+        .hero-content { position: relative; z-index: 2; text-align: center; padding: 40px 20px; }
+        .hero-badge { display: inline-block; background: rgba(200, 160, 82, 0.12); border: 1px solid rgba(200, 160, 82, 0.4); color: var(--dourado-claro); padding: 10px 24px; border-radius: 50px; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; animation: fadeInDown 0.8s ease; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.25); } }
+        .hero-title { font-family: 'Playfair Display', serif; font-size: 3.8rem; font-weight: 800; color: var(--branco); margin-bottom: 16px; animation: fadeInUp 0.8s ease; }
+        .hero-title .gold-text { color: var(--dourado); display: block; font-size: 3.2rem; font-weight: 700; font-style: italic; letter-spacing: 3px; }
+        .hero-subtitle { font-size: 1.2rem; color: #bcc6cf; margin-bottom: 10px; animation: fadeInUp 1s ease; }
+        .hero-tagline { font-size: 1.05rem; color: #8899aa; margin-bottom: 36px; animation: fadeInUp 1.2s ease; font-style: italic; }
+        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; animation: fadeInUp 1.4s ease; }
+        .btn-gold { background: linear-gradient(135deg, var(--dourado) 0%, #b8913d 100%); color: #0a1e2f; border: none; padding: 14px 32px; border-radius: 50px; font-weight: 700; box-shadow: var(--sombra-dourada); transition: 0.4s; }
+        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 16px 45px rgba(200, 160, 82, 0.4); color: #0a1e2f; background: linear-gradient(135deg, #d4b56a 0%, #c8a052 100%); }
+        .btn-outline-gold { background: transparent; color: var(--dourado); border: 2px solid var(--dourado); padding: 14px 32px; border-radius: 50px; font-weight: 600; transition: 0.4s; }
+        .btn-outline-gold:hover { background: rgba(200, 160, 82, 0.1); border-color: var(--dourado-claro); color: var(--dourado-claro); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(200, 160, 82, 0.2); }
+        .hero-scroll-indicator { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 2; animation: bounceDown 2s infinite; cursor: pointer; }
+        .hero-scroll-indicator span { display: block; width: 36px; height: 36px; border-radius: 50%; border: 2px solid rgba(200, 160, 82, 0.5); display: flex; align-items: center; justify-content: center; color: var(--dourado); font-size: 0.9rem; transition: 0.3s; }
+        .hero-scroll-indicator span:hover { background: rgba(200, 160, 82, 0.15); border-color: var(--dourado); }
+        @keyframes bounceDown { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(12px); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ========== SEÇÃO IMÓVEIS ========== */
+        .section-imoveis { padding: 100px 0; background: var(--cinza-claro); }
+        .section-label { display: inline-block; font-size: 0.85rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--dourado); margin-bottom: 12px; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 700; color: var(--azul-profundo); margin-bottom: 20px; position: relative; }
+        .section-title::after { content: ''; display: block; width: 70px; height: 3px; background: var(--dourado); margin-top: 12px; }
+        .imovel-card { background: var(--branco); border-radius: 16px; overflow: hidden; box-shadow: var(--sombra-suave); transition: 0.4s; height: 100%; display: flex; flex-direction: column; border: 1px solid transparent; }
+        .imovel-card:hover { transform: translateY(-6px); box-shadow: var(--sombra-media); border-color: rgba(200, 160, 82, 0.3); }
+        .imovel-img { width: 100%; height: 200px; object-fit: cover; background: #e9ecef; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--dourado); }
+        .imovel-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+        .imovel-ref { font-size: 0.8rem; color: var(--cinza-medio); letter-spacing: 1px; }
+        .imovel-tipo { font-size: 0.9rem; font-weight: 600; color: var(--dourado); text-transform: uppercase; margin-bottom: 8px; }
+        .imovel-nome { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--azul-profundo); margin-bottom: 12px; }
+        .imovel-desc { font-size: 0.9rem; color: #5a6575; margin-bottom: 16px; flex: 1; }
+        .imovel-valor { font-size: 1.5rem; font-weight: 700; color: var(--azul-profundo); margin-bottom: 4px; }
+        .imovel-valor small { font-size: 0.9rem; font-weight: 400; }
+        .imovel-detalhes { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; font-size: 0.9rem; color: #4a5568; }
+        .imovel-detalhes span { background: var(--cinza-claro); padding: 4px 12px; border-radius: 20px; }
+        .btn-ver { display: inline-block; background: transparent; border: 2px solid var(--dourado); color: var(--dourado); padding: 10px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; text-align: center; transition: 0.3s; margin-top: auto; }
+        .btn-ver:hover { background: var(--dourado); color: #0a1e2f; }
+
+        /* Demais seções (Sobre, Dados, Contato, Localização, Footer) mantidas como no index anterior, mas omitidas aqui por brevidade. Copie o restante do index completo que já forneci. */
+    </style>
 </head>
 <body>
-<header>
-  <div class="logo">DiGi <span>Iguá</span></div>
-  <div class="login">Olá, Faça seu login!<br/><small>Ou cadastre-se</small></div>
-</header>
+    <!-- NAVBAR (mantida igual ao index anterior) -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fa-solid fa-building-columns"></i> Hernandes Imobiliária</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#imoveis">Imóveis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#dados">Dados</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#localizacao">Localização</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<nav>
-  <a href="#" class="active">Todos os serviços</a>
-  <a href="#">Consulta de faturas</a>
-  <a href="#">DPA e DPE</a>
-  <a href="#">Ligação nova</a>
-  <a href="#">Tarifa social</a>
-  <a href="https://wa.me/5599981178581?text=Ol%C3%A1%2C%20preciso%20da%20segunda%20via%20da%20minha%20fatura" target="_blank" rel="noopener">Segunda via fácil</a>
-</nav>
+    <!-- HERO (idêntico) -->
+    <!-- ... -->
 
-<section class="hero">
-  <div>
-    <h1>A fatura de água<br/><b>tem um novo modelo</b></h1>
-    <p>Em breve, sua nova conta trará dados da Nota Fiscal. Não há mudança na estrutura tarifária, nem nas formas de pagamento.</p>
-  </div>
-  <div class="hero-illustration">💧</div>
-</section>
+    <!-- NOVA SEÇÃO: IMÓVEIS EM DESTAQUE -->
+    <section class="section-imoveis" id="imoveis">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-label"><i class="fa-solid fa-building me-1"></i> Oportunidades</span>
+                <h2 class="section-title">Imóveis em Destaque</h2>
+                <p style="color: #4a5568; max-width: 600px; margin: 0 auto;">Confira abaixo alguns de nossos imóveis disponíveis para venda e locação.</p>
+            </div>
+            <div class="row g-4">
+                <!-- Imóvel 1: HA1053 -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
+                    <div class="imovel-card">
+                        <img src="https://placehold.co/400x200/0a1e2f/c8a052?text=Apartamento+Tatuapé" alt="HA1053" class="imovel-img">
+                        <div class="imovel-body">
+                            <div class="imovel-ref">REF. HA1053</div>
+                            <div class="imovel-tipo">Locação</div>
+                            <h5 class="imovel-nome">Apartamento 2 dorms - Tatuapé</h5>
+                            <p class="imovel-desc">64m², 1 vaga, piscina, salão de festas. Próximo à Radial Leste.</p>
+                            <div class="imovel-detalhes">
+                                <span><i class="fa-solid fa-bed"></i> 2</span>
+                                <span><i class="fa-solid fa-car"></i> 1</span>
+                                <span>64m²</span>
+                            </div>
+                            <div class="imovel-valor">R$ 2.500<span>/mês</span></div>
+                            <a href="https://www.hernandesimoveis.com.br/imovel/edificio-residencial-locacao-sao-paulo-tatuape-2dormitorios-1vaga-64m2/HA1053" target="_blank" class="btn-ver">Ver Detalhes <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
 
-<section class="cards">
-  <a class="card" href="https://wa.me/5599981178581?text=Ol%C3%A1%2C%20preciso%20da%20segunda%20via%20da%20minha%20fatura" target="_blank" rel="noopener">
-    <div class="icon">🧾</div>
-    <h3>Segunda via fácil</h3>
-    <p>Solicite agora pelo WhatsApp</p>
-  </a>
-  <a class="card alt" href="#">
-    <div class="icon">🤝</div>
-    <h3>Negociação de dívidas</h3>
-    <p>Regularize sua situação</p>
-  </a>
-  <a class="card warn" href="#">
-    <div class="icon">🚱</div>
-    <h3>Falta d'água</h3>
-    <p>Informe ocorrências na sua região</p>
-  </a>
-</section>
+                <!-- Imóvel 2: HA1035 -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="imovel-card">
+                        <img src="https://placehold.co/400x200/0a1e2f/c8a052?text=Apartamento+3+Suites" alt="HA1035" class="imovel-img">
+                        <div class="imovel-body">
+                            <div class="imovel-ref">REF. HA1035</div>
+                            <div class="imovel-tipo">Locação</div>
+                            <h5 class="imovel-nome">3 Dorms, 1 Suíte - Metrô Carrão</h5>
+                            <p class="imovel-desc">82m², 2 vagas, suíte com hidromassagem, próximo ao colégio Mendel.</p>
+                            <div class="imovel-detalhes">
+                                <span><i class="fa-solid fa-bed"></i> 3</span>
+                                <span><i class="fa-solid fa-car"></i> 2</span>
+                                <span>82m²</span>
+                            </div>
+                            <div class="imovel-valor">R$ 3.900<span>/mês</span></div>
+                            <a href="https://www.hernandesimoveis.com.br/imovel/apartamento-locacao-sao-paulo-tatuape-3dormitorios-1suite-2vagas-82m2/HA1035" target="_blank" class="btn-ver">Ver Detalhes <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
 
-<footer>© Digi Iguá — Atendimento via WhatsApp: (99) 98117-8581</footer>
+                <!-- Imóvel 3: HA781 (Sobrado) -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="imovel-card">
+                        <img src="https://placehold.co/400x200/0a1e2f/c8a052?text=Sobrado+235m²" alt="HA781" class="imovel-img">
+                        <div class="imovel-body">
+                            <div class="imovel-ref">REF. HA781</div>
+                            <div class="imovel-tipo">Venda</div>
+                            <h5 class="imovel-nome">Sobrado 3 dorms, 1 suíte - Tatuapé</h5>
+                            <p class="imovel-desc">235m², 2 vagas, amplo espaço, bairro nobre.</p>
+                            <div class="imovel-detalhes">
+                                <span><i class="fa-solid fa-bed"></i> 3+1</span>
+                                <span><i class="fa-solid fa-car"></i> 2</span>
+                                <span>235m²</span>
+                            </div>
+                            <div class="imovel-valor">R$ 1.200.000</div>
+                            <a href="https://www.hernandesimoveis.com.br/imovel/sobrado-venda-sao-paulo-tatuape-3dormitorios-1suite-2vagas-235m2/HA781" target="_blank" class="btn-ver">Ver Detalhes <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
 
-<script>
-  (function () {
-    var WA_URL = 'https://wa.me/5599981178581?text=Ol%C3%A1%2C%20preciso%20da%20segunda%20via%20da%20minha%20fatura';
-    document.addEventListener('click', function (e) {
-      var a = e.target.closest('a');
-      if (a && a.href && a.href.indexOf('wa.me') !== -1) return;
-      e.preventDefault();
-      window.open(WA_URL, '_blank', 'noopener');
-    }, true);
-  })();
-</script>
+                <!-- Imóvel 4: HA966 (Sobrado Locação) -->
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="imovel-card">
+                        <img src="https://placehold.co/400x200/0a1e2f/c8a052?text=Sobrado+120m²" alt="HA966" class="imovel-img">
+                        <div class="imovel-body">
+                            <div class="imovel-ref">REF. HA966</div>
+                            <div class="imovel-tipo">Locação</div>
+                            <h5 class="imovel-nome">Sobrado 3 dorms, 4 vagas - Tatuapé</h5>
+                            <p class="imovel-desc">120m², ótima localização, perto do metrô.</p>
+                            <div class="imovel-detalhes">
+                                <span><i class="fa-solid fa-bed"></i> 3</span>
+                                <span><i class="fa-solid fa-car"></i> 4</span>
+                                <span>120m²</span>
+                            </div>
+                            <div class="imovel-valor">R$ 3.500<span>/mês</span></div>
+                            <a href="https://www.hernandesimoveis.com.br/imovel/sobrado-locacao-sao-paulo-tatuape-3dormitorios-4vagas-120m2/HA966" target="_blank" class="btn-ver">Ver Detalhes <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEMAIS SEÇÕES (Sobre, Dados, Contato, Localização, Footer) – utilize o mesmo código do index completo anterior, apenas adicionando este bloco de imóveis. -->
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 80, duration: 700 });
+        // Restante do JS igual ao index anterior
+    </script>
 </body>
 </html>
